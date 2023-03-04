@@ -13,8 +13,8 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(FXMLLoader.load(getClass().getResource("screens/login.fxml")));
-        scene.getStylesheets().add("com/study/store/styles/style.css");
+        scene = new Scene(FXMLLoader.load(getClass().getResource("/fxml/login.fxml")));
+        scene.getStylesheets().add("/styles/login.css");
         stage.setScene(scene);
         stage.show();
     }

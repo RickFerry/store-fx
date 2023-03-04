@@ -1,8 +1,13 @@
 package com.study.store.controllers;
 
+import static java.lang.System.exit;
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import javax.swing.JOptionPane;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,7 +18,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import javax.swing.JOptionPane;
 
 public class LoginController implements Initializable {
 
@@ -32,7 +36,7 @@ public class LoginController implements Initializable {
 
     @FXML
     private void closeApp(ActionEvent event) {
-        System.exit(0);
+        exit(0);
     }
 
     @FXML
@@ -45,9 +49,10 @@ public class LoginController implements Initializable {
     }
 
     public void openForms(String name) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/screens/" + name + ".fxml"));
+    	Parent root = FXMLLoader.load(getClass().getResource("/fxml/" + name + ".fxml"));
         Stage stage = new Stage();
-        stage.setScene(new Scene(root));
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
         stage.show();
     }
 }
