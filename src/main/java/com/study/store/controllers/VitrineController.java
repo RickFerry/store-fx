@@ -60,7 +60,12 @@ public class VitrineController implements Initializable {
 			setIndex(tbView.getSelectionModel().getSelectedIndex());
 
 			try {
-				openForms("item");
+				// openForms("item");
+				Parent root = FXMLLoader.load(getClass().getResource("/fxml/item.fxml"));
+				Stage stage = new Stage();
+				Scene scene = new Scene(root);
+				stage.setScene(scene);
+				stage.show();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -86,11 +91,14 @@ public class VitrineController implements Initializable {
 		return itensEncontrados;
 	}
 
-	public void openForms(String name) throws IOException {
-		Parent root = FXMLLoader.load(getClass().getResource("/fxml/" + name + ".fxml"));
-		Stage stage = new Stage();
-		Scene scene = new Scene(root);
-		stage.setScene(scene);
-		stage.show();
-	}
+	/*
+	 * public void openForms(String name) throws IOException {
+	 * Parent root = FXMLLoader.load(getClass().getResource("/fxml/" + name +
+	 * ".fxml"));
+	 * Stage stage = new Stage();
+	 * Scene scene = new Scene(root);
+	 * stage.setScene(scene);
+	 * stage.show();
+	 * }
+	 */
 }
