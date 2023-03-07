@@ -1,0 +1,3 @@
+digraph "com.study:store:jar:1.0-SNAPSHOT" { 
+	"com.study:store:jar:1.0-SNAPSHOT" -> "org.projectlombok:lombok:jar:1.18.26:compile" ; 
+ } 
