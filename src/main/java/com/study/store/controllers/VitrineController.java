@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import com.study.store.models.Carrinho;
 import com.study.store.models.ItensProperty;
 import com.study.store.models.Produto;
 import com.study.store.models.Vitrine;
@@ -28,14 +29,19 @@ public class VitrineController implements Initializable {
 
 	@FXML
 	private TextField txtItem;
+
 	@FXML
 	private TableView<ItensProperty> tbView = new TableView<>();
+
 	@FXML
 	private TableColumn<ItensProperty, String> tbColumnProduto;
+
 	@FXML
 	private TableColumn<ItensProperty, Double> tbColumnPreco;
 
 	private static ObservableList<ItensProperty> listItens = FXCollections.observableArrayList();
+
+	private static Carrinho carrinho = new Carrinho();
 
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
@@ -72,6 +78,14 @@ public class VitrineController implements Initializable {
 		}
 	}
 
+	public static Carrinho getCarrinho() {
+		return carrinho;
+	}
+
+	public static void setCarrinho(Carrinho carrinho) {
+		VitrineController.carrinho = carrinho;
+	}
+
 	private ObservableList<ItensProperty> findItens() {
 		ObservableList<ItensProperty> itensEncontrados = FXCollections.observableArrayList();
 		for (ItensProperty itens : listItens) {
@@ -82,13 +96,12 @@ public class VitrineController implements Initializable {
 		return itensEncontrados;
 	}
 
-	  public void openForms(String name) throws IOException {
-	  Parent root = FXMLLoader.load(getClass().getResource("/fxml/" + name +
-	  ".fxml"));
-	  Stage stage = new Stage();
-	  Scene scene = new Scene(root);
-	  stage.setScene(scene);
-	  stage.show();
-	  }
-	 
+	public void openForms(String name) throws IOException {
+		Parent root = FXMLLoader.load(getClass().getResource("/fxml/" + name +
+				".fxml"));
+		Stage stage = new Stage();
+		Scene scene = new Scene(root);
+		stage.setScene(scene);
+		stage.show();
+	}
 }

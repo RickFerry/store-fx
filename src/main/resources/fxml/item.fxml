@@ -5,12 +5,12 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.study.store.controllers.ItemController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.study.store.controllers.ItemController">
    <children>
       <ImageView fx:id="imgView" fitHeight="271.0" fitWidth="200.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
       <Label fx:id="lblPreco" layoutX="223.0" layoutY="51.0" text="Preço:" />
       <Label fx:id="lblDescricao" layoutX="223.0" layoutY="110.0" text="Descrição:" />
-      <Button layoutX="223.0" layoutY="224.0" mnemonicParsing="false" text="Adicionar ao Carrinho" />
+      <Button fx:id="btnAddCarrinho" layoutX="303.0" layoutY="225.0" mnemonicParsing="false" onAction="#adicionarAoCarrinho" text="Adicionar ao Carrinho" />
       <Label fx:id="lblValorPreco" layoutX="276.0" layoutY="51.0" />
       <Label fx:id="lblValorDescricao" layoutX="303.0" layoutY="110.0" />
    </children>

@@ -1,17 +1,25 @@
 package com.study.store.controllers;
 
+import static com.study.store.controllers.VitrineController.getCarrinho;
 import static java.lang.String.valueOf;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 import com.study.store.models.Produto;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,7 +29,8 @@ import lombok.Setter;
 @AllArgsConstructor
 public class ItemController implements Initializable {
 
-	@Getter @Setter
+	@Getter
+	@Setter
 	private ImageView image;
 	private static Produto produto;
 	private static int index;
@@ -30,12 +39,15 @@ public class ItemController implements Initializable {
 			"https://shoxstore.com.br/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/c/_/c_pia_de_2ic-8979-006_zoom1.jpg.jpg",
 			"https://cdn.awsli.com.br/600x450/1842/1842028/produto/190692137/3e3303fc16.jpg",
 			"https://static.netshoes.com.br/produtos/caneleira-topper-training-arena-infantil/36/138-4694-036/138-4694-036_zoom1.jpg" };
-	
+
 	@FXML
 	private ResourceBundle resources;
 
 	@FXML
 	private URL location;
+
+	@FXML
+	private Button btnAddCarrinho;
 
 	@FXML
 	private ImageView imgView;
@@ -47,18 +59,29 @@ public class ItemController implements Initializable {
 	private Label lblPreco;
 
 	@FXML
-    private Label lblValorPreco;
+	private Label lblValorPreco;
 
-    @FXML
-    private Label lblValorDescricao;
+	@FXML
+	private Label lblValorDescricao;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		lblValorDescricao.setText(produto.getProduto());
 		lblValorPreco.setText(valueOf(produto.getPreco()));
-		
+
 		imgView.setImage(new Image("https://www.amilesportes.com.br/lojas/00044767/prod/054043-1.jpg"));
 		imgView.setImage(new Image(images[index]));
+	}
+
+	@FXML
+	void adicionarAoCarrinho(ActionEvent event) {
+		getCarrinho().addProduto(produto);
+
+		try {
+			openForms("carrinho");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	public static Produto getProduto() {
@@ -83,5 +106,14 @@ public class ItemController implements Initializable {
 
 	public static void setImages(String[] images) {
 		ItemController.images = images;
+	}
+
+	public void openForms(String name) throws IOException {
+		Parent root = FXMLLoader.load(getClass().getResource("/fxml/" + name +
+				".fxml"));
+		Stage stage = new Stage();
+		Scene scene = new Scene(root);
+		stage.setScene(scene);
+		stage.show();
 	}
 }
