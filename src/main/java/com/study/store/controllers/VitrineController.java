@@ -97,8 +97,7 @@ public class VitrineController implements Initializable {
 	}
 
 	public void openForms(String name) throws IOException {
-		Parent root = FXMLLoader.load(getClass().getResource("/fxml/" + name +
-				".fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("/fxml/" + name + ".fxml"));
 		Stage stage = new Stage();
 		Scene scene = new Scene(root);
 		stage.setScene(scene);

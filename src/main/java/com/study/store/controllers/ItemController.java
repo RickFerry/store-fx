@@ -29,11 +29,14 @@ import lombok.Setter;
 @AllArgsConstructor
 public class ItemController implements Initializable {
 
-	@Getter
-	@Setter
+	@Getter@Setter
 	private ImageView image;
 	private static Produto produto;
 	private static int index;
+	public static Stage stage = new Stage();
+	@FXML
+
+
 	private static String[] images = { "https://www.amilesportes.com.br/lojas/00044767/prod/054043-1.jpg",
 			"https://a-static.mlcdn.com.br/800x560/luva-de-goleiro-umbro-pro-attak-f6-futsal/netshoes/d21-7005-026-01/4bbe934aea5f9e8c6f38da04456bd10d.jpg",
 			"https://shoxstore.com.br/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/c/_/c_pia_de_2ic-8979-006_zoom1.jpg.jpg",
@@ -108,12 +111,19 @@ public class ItemController implements Initializable {
 		ItemController.images = images;
 	}
 
+	public static Stage getStage() {
+		return stage;
+	}
+
+	public static void setStage(Stage stage) {
+		ItemController.stage = stage;
+	}
+
 	public void openForms(String name) throws IOException {
-		Parent root = FXMLLoader.load(getClass().getResource("/fxml/" + name +
-				".fxml"));
-		Stage stage = new Stage();
+		Parent root = FXMLLoader.load(getClass().getResource("/fxml/" + name + ".fxml"));
+		Stage screen = new Stage();
 		Scene scene = new Scene(root);
-		stage.setScene(scene);
-		stage.show();
+		screen.setScene(scene);
+		screen.show();
 	}
 }
