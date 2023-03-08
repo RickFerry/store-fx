@@ -29,7 +29,7 @@ public class VitrineController implements Initializable {
 	@FXML
 	private TextField txtItem;
 	@FXML
-	private TableView<ItensProperty> tbView;
+	private static TableView<ItensProperty> tbView;
 	@FXML
 	private TableColumn<ItensProperty, String> tbColumnProduto;
 	@FXML
@@ -40,6 +40,12 @@ public class VitrineController implements Initializable {
 	public VitrineController() {
 		this.tbView = new TableView<>();
 	}
+
+	public static TableView<ItensProperty> getTbView() {
+		return tbView;
+	}
+
+	set
 
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
@@ -60,12 +66,7 @@ public class VitrineController implements Initializable {
 			setIndex(tbView.getSelectionModel().getSelectedIndex());
 
 			try {
-				// openForms("item");
-				Parent root = FXMLLoader.load(getClass().getResource("/fxml/item.fxml"));
-				Stage stage = new Stage();
-				Scene scene = new Scene(root);
-				stage.setScene(scene);
-				stage.show();
+				openForms("item");
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -91,14 +92,12 @@ public class VitrineController implements Initializable {
 		return itensEncontrados;
 	}
 
-	/*
-	 * public void openForms(String name) throws IOException {
-	 * Parent root = FXMLLoader.load(getClass().getResource("/fxml/" + name +
-	 * ".fxml"));
-	 * Stage stage = new Stage();
-	 * Scene scene = new Scene(root);
-	 * stage.setScene(scene);
-	 * stage.show();
-	 * }
-	 */
+	  public void openForms(String name) throws IOException {
+	  Parent root = FXMLLoader.load(getClass().getResource("/fxml/" + name +
+	  ".fxml"));
+	  Stage stage = new Stage();
+	  Scene scene = new Scene(root);
+	  stage.setScene(scene);
+	  stage.show();
+	  }
 }
