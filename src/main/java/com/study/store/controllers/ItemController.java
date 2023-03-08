@@ -1,5 +1,7 @@
 package com.study.store.controllers;
 
+import static java.lang.String.valueOf;
+
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -44,10 +46,19 @@ public class ItemController implements Initializable {
 	@FXML
 	private Label lblPreco;
 
+	@FXML
+    private Label lblValorPreco;
+
+    @FXML
+    private Label lblValorDescricao;
+
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		this.setImage(new ImageView(new Image("https://www.amilesportes.com.br/lojas/00044767/prod/054043-1.jpg")));
-		this.setImage(new ImageView(new Image(images[index])));
+		lblValorDescricao.setText(produto.getProduto());
+		lblValorPreco.setText(valueOf(produto.getPreco()));
+		
+		imgView.setImage(new Image("https://www.amilesportes.com.br/lojas/00044767/prod/054043-1.jpg"));
+		imgView.setImage(new Image(images[index]));
 	}
 
 	public static Produto getProduto() {

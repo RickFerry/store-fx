@@ -29,17 +29,13 @@ public class VitrineController implements Initializable {
 	@FXML
 	private TextField txtItem;
 	@FXML
-	private TableView<ItensProperty> tbView;
+	private TableView<ItensProperty> tbView = new TableView<>();
 	@FXML
 	private TableColumn<ItensProperty, String> tbColumnProduto;
 	@FXML
 	private TableColumn<ItensProperty, Double> tbColumnPreco;
 
 	private static ObservableList<ItensProperty> listItens = FXCollections.observableArrayList();
-
-	public VitrineController() {
-		this.tbView = new TableView<>();
-	}
 
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
@@ -86,13 +82,13 @@ public class VitrineController implements Initializable {
 		return itensEncontrados;
 	}
 
-	public void openForms(String name) throws IOException {
-		Parent root = FXMLLoader.load(getClass().getResource("/fxml/" + name +
-				".fxml"));
-		Stage stage = new Stage();
-		Scene scene = new Scene(root);
-		stage.setScene(scene);
-		stage.show();
-	}
-
+	  public void openForms(String name) throws IOException {
+	  Parent root = FXMLLoader.load(getClass().getResource("/fxml/" + name +
+	  ".fxml"));
+	  Stage stage = new Stage();
+	  Scene scene = new Scene(root);
+	  stage.setScene(scene);
+	  stage.show();
+	  }
+	 
 }
