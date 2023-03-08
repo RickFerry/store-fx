@@ -39,31 +39,26 @@ public class ItemController implements Initializable {
 	private ImageView imgView;
 
 	@FXML
-	private static Label lblDescricao;
+	private Label lblDescricao;
 
 	@FXML
-	private static Label lblPreco;
+	private Label lblPreco;
+
+	@FXML
+    private Label lblValorPreco;
+
+    @FXML
+    private Label lblValorDescricao;
+
+
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		lblValorDescricao.setText(produto.getProduto());
+		lblValorPreco.setText(String.valueOf(produto.getPreco()));
+		
 		imgView.setImage(new Image("https://www.amilesportes.com.br/lojas/00044767/prod/054043-1.jpg"));
 		imgView.setImage(new Image(images[index]));
-	}
-
-	public static Label getLblDescricao() {
-		return lblDescricao;
-	}
-
-	public static void setLblDescricao(Label lblDescricao) {
-		ItemController.lblDescricao = lblDescricao;
-	}
-
-	public static Label getLblPreco() {
-		return lblPreco;
-	}
-
-	public static void setLblPreco(Label lblPreco) {
-		ItemController.lblPreco = lblPreco;
 	}
 
 	public static Produto getProduto() {
