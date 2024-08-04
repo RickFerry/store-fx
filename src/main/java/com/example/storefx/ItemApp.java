@@ -16,6 +16,11 @@ public class ItemApp extends Application {
     private static Stage stage;
     private static Produto produto;
     private static int index;
+    private AnchorPane pane;
+    private ImageView imgItem;
+    private Label lbDescricao;
+    private Label lbPreco;
+    private Button btAddCarrinho;
     private static final String[] images = {
             "http://www.sportcenterlopes.com.br/images/250_topper_campo_2009replic.jpg",
             "http://1.bp.blogspot.com/_H8uGs8K8kaY/TLZTXR8nIgI/AAAAAAAAF_0/BvpxdqGF4PE/s1600/luva_umbro.png",
@@ -26,44 +31,69 @@ public class ItemApp extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        this.stage = stage;
-        AnchorPane pane = new AnchorPane();
-        pane.setPrefSize(600, 400);
-
-        ImageView imgItem = new ImageView(new Image(images[index]));
-        imgItem.setFitWidth(300);
-        imgItem.setFitHeight(200);
-        imgItem.setEffect(new Reflection());
-        imgItem.setLayoutX(50);
-        imgItem.setLayoutY(50);
-
-        Label lbDescricao = new Label("Descrição: " + produto.getDescricao());
-        lbDescricao.setLayoutX(50);
-        lbDescricao.setLayoutY(300);
-
-        Label lbPreco = new Label("Preço: " + produto.getPreco());
-        lbPreco.setLayoutX(50);
-        lbPreco.setLayoutY(330);
-
-        Button btAddCarrinho = new Button("Adicionar ao Carrinho");
-        InnerShadow is = new InnerShadow();
-        is.setColor(Color.RED);
-        btAddCarrinho.setEffect(is);
-        btAddCarrinho.setLayoutX(50);
-        btAddCarrinho.setLayoutY(360);
-        btAddCarrinho.setOnAction(event -> {
-            VitrineApp.getCarrinho().addProduto(produto);
-            try {
-                new CarrinhoApp().start(new Stage());
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        });
-
-        pane.getChildren().addAll(imgItem, lbDescricao, lbPreco, btAddCarrinho);
+        ItemApp.stage = stage;
+        initComponents();
+        initListeners();
+        initLayouts();
         Scene scene = new Scene(pane);
         stage.setScene(scene);
         stage.show();
+    }
+
+    private void initComponents() {
+        pane = new AnchorPane();
+        pane.setPrefSize(600, 400);
+
+        imgItem = createImageView();
+        lbDescricao = createLabel("Descrição: " + produto.getDescricao());
+        lbPreco = createLabel("Preço: " + produto.getPreco());
+        btAddCarrinho = createAddCarrinhoButton();
+
+        pane.getChildren().addAll(imgItem, lbDescricao, lbPreco, btAddCarrinho);
+    }
+
+    private void initListeners() {
+        btAddCarrinho.setOnAction(event -> handleAddCarrinho());
+    }
+
+    private void initLayouts() {
+        imgItem.setLayoutX(50);
+        imgItem.setLayoutY(50);
+        lbDescricao.setLayoutX(50);
+        lbDescricao.setLayoutY(300);
+        lbPreco.setLayoutX(50);
+        lbPreco.setLayoutY(330);
+        btAddCarrinho.setLayoutX(50);
+        btAddCarrinho.setLayoutY(360);
+    }
+
+    private ImageView createImageView() {
+        imgItem = new ImageView(new Image(images[index]));
+        imgItem.setFitWidth(300);
+        imgItem.setFitHeight(200);
+        imgItem.setEffect(new Reflection());
+        return imgItem;
+    }
+
+    private Label createLabel(String text) {
+        return new Label(text);
+    }
+
+    private Button createAddCarrinhoButton() {
+        btAddCarrinho = new Button("Adicionar ao Carrinho");
+        InnerShadow is = new InnerShadow();
+        is.setColor(Color.RED);
+        btAddCarrinho.setEffect(is);
+        return btAddCarrinho;
+    }
+
+    private void handleAddCarrinho() {
+        VitrineApp.getCarrinho().addProduto(produto);
+        try {
+            new CarrinhoApp().start(new Stage());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public static Stage getStage() {
