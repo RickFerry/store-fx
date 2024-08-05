@@ -108,7 +108,6 @@ Arquivos de implementação principais:
 ## Licença
 
 Este projeto está licenciado sob a [Nome da Licença].
-```
 
 ## Contact
 
