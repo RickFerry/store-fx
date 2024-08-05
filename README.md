@@ -1,3 +1,5 @@
+### README para o Repositório "store-fx"
+
 # Store FX
 
 Este projeto é uma aplicação JavaFX que simula uma vitrine de loja, permitindo aos usuários visualizar e interagir com produtos, carrinho de compras e realizar confirmações de compras. Além disso, a aplicação integra com a API do Twitter para exibir tweets relacionados.
@@ -83,8 +85,8 @@ Este projeto está licenciado sob a Licença MIT. Veja o arquivo [LICENSE](LICEN
 
 ## Contato
 
-Ricardo Ferreira - [seu.email@example.com](ricardo.martins18@fatec.sp.gv.br)
+Ricardo Ferreira - [seu.email@example.com](ricardo.martins18@fatec.sp.gov.br)
 
-LinkedIn: [[linkedin.com/in/ricardo-ferreira](https://www.linkedin.com/in/ricardo-ferreira-martins-9a688214b/)](https://www.linkedin.com/in/ricardo-ferreira)
+LinkedIn: [linkedin.com/in/ricardo-ferreira]([https://www.linkedin.com/in/ricardo-ferreira](https://www.linkedin.com/in/ricardo-ferreira-martins-9a688214b/))
 
 ---
