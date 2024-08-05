@@ -119,11 +119,16 @@ public class ItemApp extends Application {
     }
 
     private void handleAddCarrinho() {
-        VitrineApp.getCarrinho().addProduto(produto);
-        try {
-            new CarrinhoApp().start(new Stage());
-        } catch (Exception e) {
-            e.printStackTrace();
+        Produto prod = ItemApp.getProduto();
+        if (!VitrineApp.getCarrinho().getProdutos().contains(prod)) {
+            VitrineApp.getCarrinho().addProduto(prod);
+            try {
+                new CarrinhoApp().start(new Stage());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } else {
+            System.out.println("Produto já está no carrinho.");
         }
     }
 

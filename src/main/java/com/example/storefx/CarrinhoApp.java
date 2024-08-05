@@ -73,6 +73,10 @@ public class CarrinhoApp extends Application {
         btConfirmarCompra.setLayoutX(300);
         btConfirmarCompra.setLayoutY(270);
         btConfirmarCompra.setOnAction(event -> {
+            if (VitrineApp.getCarrinho().getProdutos().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "O carrinho está vazio. Adicione itens antes de finalizar a compra.");
+                return;
+            }
             new Thread(() -> {
                 try {
                     Thread.sleep(5000);
@@ -80,16 +84,14 @@ public class CarrinhoApp extends Application {
                     e.printStackTrace();
                 }
                 JOptionPane.showMessageDialog(null, "Compra realizada com sucesso!");
-                Platform.runLater(() -> {
-                    CarrinhoApp.getStage().close();
-                    ItemApp.getStage().close();
-                });
+                Platform.runLater(Platform::exit);
             }).start();
         });
         return btConfirmarCompra;
     }
 
     private void initItens() {
+        listItens.clear();
         for (Produto p : VitrineApp.getCarrinho().getProdutos()) {
             listItens.add(new VitrineApp.ItensProperty(p.getProduto(), p.getPreco()));
         }

@@ -22,7 +22,7 @@ public class VitrineApp extends Application {
     private TableColumn<ItensProperty, String> columnProduto;
     private TableColumn<ItensProperty, Double> columnPreco;
     private static ObservableList<ItensProperty> listItens = FXCollections.observableArrayList();
-    private static Carrinho carrinho;
+    private static Carrinho carrinho = new Carrinho();
     private static Stage stage;
 
     public static Carrinho getCarrinho() {
