@@ -62,7 +62,6 @@ public class VitrineApp extends Application {
         columnPreco.setCellValueFactory(new PropertyValueFactory<>("preco"));
         initItens();
         tbVitrine.setItems(listItens);
-        System.out.println("Finalizando initComponents...");
     }
 
     private void initLayout() {

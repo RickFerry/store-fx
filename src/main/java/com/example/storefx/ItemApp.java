@@ -1,5 +1,6 @@
 package com.example.storefx;
 
+import javafx.animation.*;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -11,6 +12,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 public class ItemApp extends Application {
     private static Stage stage;
@@ -34,10 +36,39 @@ public class ItemApp extends Application {
         ItemApp.stage = stage;
         initComponents();
         initListeners();
+        initTransition();
+        initTimeline();
         initLayouts();
         Scene scene = new Scene(pane);
         stage.setScene(scene);
         stage.show();
+    }
+
+    private void initTimeline() {
+        setImgAnimation(imgItem);
+    }
+
+    static void setImgAnimation(ImageView imgItem) {
+        Timeline timeline = new Timeline();
+        KeyValue kv = new KeyValue(imgItem.opacityProperty(), 0.0);
+        KeyFrame kf = new KeyFrame(Duration.millis(2000), kv);
+        timeline.getKeyFrames().add(kf);
+        timeline.setCycleCount(Animation.INDEFINITE);
+        timeline.setAutoReverse(true);
+        timeline.play();
+    }
+
+    private void initTransition() {
+        FadeTransition transition = new FadeTransition(Duration.millis(3000), imgItem);
+        transition.setFromValue(0.0);
+        transition.setToValue(1.0);
+        ScaleTransition st = new ScaleTransition(Duration.millis(3000), btAddCarrinho);
+        st.setToX(1.5);
+        st.setToY(1.5);
+        st.setAutoReverse(true);
+        SequentialTransition sequentialTransition = new SequentialTransition();
+        sequentialTransition.getChildren().addAll(transition, st);
+        sequentialTransition.play();
     }
 
     private void initComponents() {

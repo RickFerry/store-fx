@@ -4,8 +4,6 @@ import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
@@ -75,7 +73,7 @@ public class CarrinhoApp extends Application {
         btConfirmarCompra.setLayoutX(300);
         btConfirmarCompra.setLayoutY(270);
         btConfirmarCompra.setOnAction(event -> {
-            Thread thread = new Thread(() -> {
+            new Thread(() -> {
                 try {
                     Thread.sleep(5000);
                 } catch (InterruptedException e) {
@@ -86,8 +84,7 @@ public class CarrinhoApp extends Application {
                     CarrinhoApp.getStage().close();
                     ItemApp.getStage().close();
                 });
-            });
-            thread.start();
+            }).start();
         });
         return btConfirmarCompra;
     }

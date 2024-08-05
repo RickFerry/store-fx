@@ -67,13 +67,7 @@ public class TransitionsApp extends Application {
     }
 
     private void initTimeline() {
-        Timeline timeline = new Timeline();
-        KeyValue kv = new KeyValue(imgItem.opacityProperty(), 0.0);
-        KeyFrame kf = new KeyFrame(Duration.millis(2000), kv);
-        timeline.getKeyFrames().add(kf);
-        timeline.setCycleCount(Animation.INDEFINITE);
-        timeline.setAutoReverse(true);
-        timeline.play();
+        ItemApp.setImgAnimation(imgItem);
     }
 
     public static void main(String[] args) {
