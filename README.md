@@ -1,3 +1,4 @@
+### README.md
 ### Estrutura Completa `store-fx/`
 
 ```
@@ -20,36 +21,10 @@ src/
 │   │   ├── login.css
 ```
 
-### README.md
-
 ```markdown
 # Store-FX
 
 Store-FX é uma aplicação Java desenvolvida para gerenciar um carrinho de compras virtual, produtos e vitrines, com funcionalidades de login e pesquisa.
-
-## Estrutura do Projeto
-
-A estrutura de diretórios e arquivos do projeto é a seguinte:
-
-```
-src/
-├── main/
-│   ├── java/
-│   │   ├── module-info.java
-│   │   ├── com/
-│   │   │   ├── example/
-│   │   │   │   ├── storefx/
-│   │   │   │   │   ├── Carrinho.java
-│   │   │   │   │   ├── CarrinhoApp.java
-│   │   │   │   │   ├── ItemApp.java
-│   │   │   │   │   ├── LoginApp.java
-│   │   │   │   │   ├── Produto.java
-│   │   │   │   │   ├── SearchApp.java
-│   │   │   │   │   ├── Vitrine.java
-│   │   │   │   │   ├── VitrineApp.java
-│   ├── resources/
-│   │   ├── login.css
-```
 
 ## Tecnologias Utilizadas
 
