@@ -84,6 +84,6 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 **Ricardo Ferreira**
 - Email: [ricardo.martins18@fatec.sp.gov.br](mailto:ricardo.martins18@fatec.sp.gov.br)
-- LinkedIn: [Ricardo Ferreira](https://www.linkedin.com/in/ricardo-ferreira)
+- LinkedIn: [Ricardo Ferreira](https://www.linkedin.com/in/ricardo-ferreira-martins-9a688214b/)
 
 ---
